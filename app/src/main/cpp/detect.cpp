@@ -21,7 +21,7 @@ extern "C" int wrap_kill(pid_t, int);
 
 #define BUFFER_LEN 512
 
-#define TAG "carleen"
+#define TAG "AntiFrida-1"
 
 #define DEBUG
 
@@ -126,7 +126,6 @@ void *check_loop(void *) {
     //"frida:rpc"
     unsigned char frida_rpc[] =
             {
-
                     0xfe, 0xba, 0xfb, 0x4a, 0x9a, 0xca, 0x7f, 0xfb,
                     0xdb, 0xea, 0xfe, 0xdc
             };
@@ -145,7 +144,6 @@ void *check_loop(void *) {
         fd = wrap_openat(AT_FDCWD, "/proc/self/maps", O_RDONLY, 0);
         if (fd > 0) {
             while ((read_line(fd, buffer, BUFFER_LEN)) > 0) {
-
                 if (sscanf(buffer, "%x-%lx %4s %lx %*s %*s %s", &base, &end, perm, &offset, path) !=
                     5) {
                     continue;
